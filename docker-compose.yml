@@ -1,0 +1,27 @@
+services:
+  frontend:
+    image: frontend
+    build: ./frontend
+    expose:
+      - "8080"
+    networks:
+      - inside
+
+  backend:
+    image: backend
+    build: ./backend
+    expose:
+      - "7070"
+    networks:
+      - inside
+
+  ingress:
+    image: ingress
+    build: ./ingress
+    ports:
+      - "80:80"
+    networks:
+      - inside
+
+networks:
+  inside: {}
